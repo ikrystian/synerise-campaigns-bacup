@@ -6,16 +6,16 @@ $('document').ready(() => {
             method: 'POST',
             mode: 'cors',
             cache: 'no-cache',
-            credentials: 'same-origin',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            redirect: 'follow',
-            referrerPolicy: 'no-referrer',
-            body: JSON.stringify(data)
-        });
-        return response.json();
-    }
+        credentials: 'same-origin',
+        headers: {
+        'Content-Type': 'application/json',
+    },
+    redirect: 'follow',
+        referrerPolicy: 'no-referrer',
+        body: JSON.stringify(data)
+});
+return response.json();
+}
 
     if(window.location.href === 'https://app.synerise.com/spa/modules/campaigns/list/dynamic-content') {
         setTimeout(() => {
@@ -29,12 +29,12 @@ $('document').ready(() => {
             $('div[class^="PageHeaderstyles__PageHeaderRightSide"]').append(button);
 
             const getData = () => {
-                intervalId = setInterval(getLinks, 2000);
+                intervalId = setInterval(getLinks, 4000);
             }
 
             const stopInterval = () => {
                 clearInterval(intervalId);
-
+                console.log(campaigns);
                 postData('https://bpcoders.nazwa.pl/projekty/bacup-synerise/filter.php', {campaigns})
                     .then(res => {
                         goToWebSite(res[0]);
@@ -42,9 +42,12 @@ $('document').ready(() => {
             }
 
             function goToWebSite(array) {
+
                 array.forEach((url, i) => {
                     setTimeout(() => {
-                        var win = window.open(url['link'] + '?closeAfterGetData=true', '_blank');
+                        if(url['status'] === 'Active') {
+                            var win = window.open(url['link'] + '?closeAfterGetData=true', '_blank');
+                        }
                     }, i * 10000);
                 });
             }
@@ -62,7 +65,6 @@ $('document').ready(() => {
                 });
 
                 $('.ant-pagination-next button').trigger('click');
-                console.log(pages);
                 if (pages[0] === pages[1]) {
                     stopInterval();
                 }
@@ -74,7 +76,7 @@ $('document').ready(() => {
 
                 getData();
             });
-        }, 2000);
+        }, 4000);
     }
 
     // get data from active campaign
@@ -99,9 +101,9 @@ $('document').ready(() => {
                         author: $('[class^="CampaignHeaderstyles__CampaignAuthor"]:nth-child(1) strong').text(),
                         status,
                         modify,
-                        html: $('code.html').html(),
-                        css: $('code.css').html(),
-                        js: $('code.javascript').html(),
+                        html: $('code.html').text(),
+                        css: $('code.css').text(),
+                        js: $('code.javascript').text(),
                         summary: $('[step="display"] [class^="FormStepHeader"]').html()
                     };
                     postData('https://bpcoders.nazwa.pl/projekty/bacup-synerise/index.php', {
@@ -116,6 +118,8 @@ $('document').ready(() => {
                             }
                         });
                 }, 1000);
+            } else {
+                window.open('', '_self').close();
             }
 
 
