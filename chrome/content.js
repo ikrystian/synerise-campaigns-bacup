@@ -19,11 +19,10 @@ return response.json();
 
     if(window.location.href === 'https://app.synerise.com/spa/modules/campaigns/list/dynamic-content') {
         setTimeout(() => {
-            const rows = $('.ant-table-tbody tr.ant-table-row');
+
             var campaigns = [];
             var links = [];
             let campaign = {};
-            // const pages = [1, 1];
             const button = `<button id="generateBacup" style="margin-left: 0.5rem;">Create bacup</button>`;
             let pages = [];
             $('div[class^="PageHeaderstyles__PageHeaderRightSide"]').append(button);
@@ -34,23 +33,26 @@ return response.json();
 
             const stopInterval = () => {
                 clearInterval(intervalId);
-                console.log(campaigns);
                 postData('https://bpcoders.nazwa.pl/projekty/bacup-synerise/filter.php', {campaigns})
                     .then(res => {
-                        goToWebSite(res[0]);
+                        console.log(res);
+                        goToWebSite(res.campaigns);
                     });
             }
 
             function goToWebSite(array) {
-                array.campaigns.forEach((url, i) => {
-
+                let elements = Array.from(array);
+                var count = elements.length - 1;
+                elements.forEach((url, i) => {
                     setTimeout(() => {
                         var win = window.open(url['link'] + '?closeAfterGetData=true', '_blank');
+                        console.log(count--);
                     }, i * 10000);
                 });
             }
 
-            const getLinks = () => {    
+            const getLinks = () => {
+                const rows = $('.ant-table-tbody tr.ant-table-row');
                 rows.each(function () {
                     campaign = {
                         link: $(this).find('a[class^="FirstLinestyles__Link"]').attr('href'),
@@ -59,8 +61,9 @@ return response.json();
                         modify: $(this).find('span[class^="AvatarLabelstyles__Label"] div').text(),
                         name: $(this).find('[class^="FirstLinestyles__Link-sc"]').text()
                     }
-
-                    campaigns.push(campaign);
+                    if(campaign.status === 'Active') {
+                        campaigns.push(campaign);
+                    }
                 });
 
                 $('.ant-pagination-next button').trigger('click');
@@ -72,7 +75,7 @@ return response.json();
 
             $('body').on('click', '#generateBacup', function() {
                 pages = [1, parseInt($('ul.ant-pagination .ant-pagination-jump-next + li').text())];
-
+                // pages = [1, 1];
                 getData();
             });
         }, 4000);
@@ -103,17 +106,17 @@ return response.json();
                         html: $('code.html').text(),
                         css: $('code.css').text(),
                         js: $('code.javascript').text(),
-                        summary: $('[step="display"] [class^="FormStepHeader"]').html()
+                        summary: $('[step="display"] [class^="FormStepHeader"]').html(),
+                        link: '/' + window.location.href.split('https://app.synerise.com/')[1]
                     };
                     postData('https://bpcoders.nazwa.pl/projekty/bacup-synerise/index.php', {
                         campaign
                     })
                         .then(data => {
-                            if (data === 200) {
-                                window.open('', '_self').close();
-                            } else {
-                                alert(data);
+                            if (data !== 200) {
                                 console.log(data);
+                            } else {
+                                window.open('', '_self').close();
                             }
                         });
                 }, 1000);
