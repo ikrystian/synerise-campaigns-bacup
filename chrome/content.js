@@ -70,7 +70,7 @@ $('document').ready(() => {
             }
 
             $('body').on('click', '#generateBacup', function() {
-                pages = [1, $('ul.ant-pagination .ant-pagination-jump-next + li').text()];
+                pages = [1, parseInt($('ul.ant-pagination .ant-pagination-jump-next + li').text())];
 
                 getData();
             });
