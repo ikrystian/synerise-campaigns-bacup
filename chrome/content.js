@@ -42,23 +42,22 @@ return response.json();
             }
 
             function goToWebSite(array) {
+                array.campaigns.forEach((url, i) => {
 
-                array.forEach((url, i) => {
                     setTimeout(() => {
-                        if(url['status'] === 'Active') {
-                            var win = window.open(url['link'] + '?closeAfterGetData=true', '_blank');
-                        }
+                        var win = window.open(url['link'] + '?closeAfterGetData=true', '_blank');
                     }, i * 10000);
                 });
             }
 
-            const getLinks = () => {
+            const getLinks = () => {    
                 rows.each(function () {
                     campaign = {
                         link: $(this).find('a[class^="FirstLinestyles__Link"]').attr('href'),
                         status: $(this).find('span.ant-tag').text(),
                         s_id: $(this).data('row-key'),
-                        modify: $(this).find('span[class^="AvatarLabelstyles__Label"] div').text()
+                        modify: $(this).find('span[class^="AvatarLabelstyles__Label"] div').text(),
+                        name: $(this).find('[class^="FirstLinestyles__Link-sc"]').text()
                     }
 
                     campaigns.push(campaign);

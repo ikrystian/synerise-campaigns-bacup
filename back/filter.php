@@ -1,16 +1,15 @@
 <?php
 require_once('config.php');
-
 $data = json_decode(file_get_contents('php://input'), true);
-$campaignsToUpdate = [];
-foreach ($data as $campaign) {
-    $db->where('s_id', $campaign['s_id']);
-    $db->where('modify', $campaign['modify']);
-    $db->getOne('campaigns');
+$campaigns = $db->get("campaigns", null, $cols);
 
-    if(!$db->count) {
-        array_push($campaignsToUpdate, $campaign);
-    }
+foreach($data as $campaign) {
+    $a = array_filter(
+        $campaigns,
+        function ($e) use ($campaign) {
+            return !($e['s_id'] == $campaign['s_id'] && $e['modify'] == $campaign['modify']);
+        }
+    );
 }
 
-echo json_encode($campaignsToUpdate);
+echo json_encode($a);
