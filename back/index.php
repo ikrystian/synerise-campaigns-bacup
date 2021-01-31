@@ -13,12 +13,13 @@ if($db->count == 0) {
         'name' => $data['campaign']['name'], 
         'css' => $data['campaign']['css'], 
         'date' => $date, 
-        'html' => $data['campaign']['html'], 
+        'html' => $data['campaign']['html'],
         'js' => $data['campaign']['js'], 
         'summary' => $data['campaign']['summary'], 
         'modify' => $data['campaign']['modify'],
         'status' => $data['campaign']['status'],
-        'author' => $data['campaign']['author']
+        'author' => $data['campaign']['author'],
+        'link' => $data['campaign']['link']
     ];
     $id = $db->insert('campaigns', $insert);
     if($id) {

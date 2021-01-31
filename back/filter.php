@@ -1,15 +1,12 @@
 <?php
 require_once('config.php');
 $data = json_decode(file_get_contents('php://input'), true);
+$d = array($data['campaigns'])[0];
+
+$cols = ['link', 'status', 's_id', 'modify', 'name'];
+$db->orderBy('id', 'asc');
 $campaigns = $db->get("campaigns", null, $cols);
 
-foreach($data as $campaign) {
-    $a = array_filter(
-        $campaigns,
-        function ($e) use ($campaign) {
-            return !($e['s_id'] == $campaign['s_id'] && $e['modify'] == $campaign['modify']);
-        }
-    );
-}
+$obj = array_unique(array_merge($d, $campaigns));
 
-echo json_encode($a);
+echo json_encode($obj);

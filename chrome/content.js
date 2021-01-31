@@ -35,10 +35,9 @@ return response.json();
                 clearInterval(intervalId);
                 postData('https://bpcoders.nazwa.pl/projekty/bacup-synerise/filter.php', {campaigns})
                     .then(res => {
-                        console.log(res);
-                        goToWebSite(res.campaigns);
+                        goToWebSite(res);
                     });
-            }
+            } 
 
             function goToWebSite(array) {
                 let elements = Array.from(array);
@@ -55,7 +54,7 @@ return response.json();
                 const rows = $('.ant-table-tbody tr.ant-table-row');
                 rows.each(function () {
                     campaign = {
-                        link: $(this).find('a[class^="FirstLinestyles__Link"]').attr('href'),
+                        link: $(this).find('a[class^="FirstLinestyles__Link"]').attr('href') + '?closeAfterGetData=true',
                         status: $(this).find('span.ant-tag').text(),
                         s_id: $(this).data('row-key'),
                         modify: $(this).find('span[class^="AvatarLabelstyles__Label"] div').text(),
