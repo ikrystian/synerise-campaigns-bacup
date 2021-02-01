@@ -1,5 +1,25 @@
+<mat-toolbar color="primary" class="toolbar">
+  <div class="toolbar__back">
+    <button mat-icon-button [routerLink]="'/'" >
+      <mat-icon aria-hidden="false" aria-label="Back to home">arrow_back</mat-icon>
+    </button>
+  </div>
+  <span>{{ first?.name }}</span>
+</mat-toolbar>
 <div class="container">
-  <ul>
-    {{ first?.name }}
-  </ul>
+  <h1>Last revision</h1>
+  JavaScript [{{ first?.date }}]
+  <ngx-codemirror
+    [ngModel]="first?.js"
+    [options]="{
+    lineNumbers: true,
+    readOnly: true,
+    theme: 'material',
+    mode: 'javascript'
+  }"
+  ></ngx-codemirror>
+
+  <code class="language-ts">
+    {{ first?.css }}
+  </code>
 </div>

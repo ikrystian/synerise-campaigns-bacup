@@ -11,6 +11,9 @@ import { MatButtonModule } from "@angular/material/button";
 import { MatExpansionModule}  from '@angular/material/expansion';
 import { HomeComponent } from './home/home.component';
 import { CampaignComponent } from './campaign/campaign.component';
+import { MatIconModule } from '@angular/material/icon';
+import { CodemirrorModule } from '@ctrl/ngx-codemirror';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -27,6 +30,9 @@ import { CampaignComponent } from './campaign/campaign.component';
     MatCardModule,
     MatButtonModule,
     MatExpansionModule,
+    MatIconModule,
+    CodemirrorModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -13,17 +13,19 @@ export class CampaignComponent implements OnInit {
   public campaigns: any;
   private baseUrl = 'http://bpcoders.nazwa.pl/projekty/bacup-synerise/show.php';
   public first: any;
-
+  obj: any;
   constructor(private route: ActivatedRoute, private http: HttpClient) {
     this.routeSub = this.route.params.subscribe(params => {
       this.getRepos(params['id'])
     });
+
   }
 
   getRepos(id: string) {
     return this.http.get(this.baseUrl + '?id=' + id).subscribe(response => {
       this.campaigns = response
       this.first = this.campaigns[0];
+      this.obj =  this.campaigns[0].html;
     });
   }
 

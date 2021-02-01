@@ -1,10 +1,8 @@
-
+<mat-toolbar color="primary">
+  <span>Home page</span>
+</mat-toolbar>
 <div class="container">
   <mat-accordion>
-    <div *ngIf="data !== []">
-      Pusto tu jakoś ;(
-      {{ data }}
-    </div>
     <mat-expansion-panel hideToggle *ngFor="let item of data">
       <mat-expansion-panel-header>
         <mat-panel-title>{{ item.name }}</mat-panel-title>
@@ -15,8 +13,10 @@
       <div>
         Author: {{ item. author }}<br>
         Last bacup from {{ item.date }}<br>
-        Campaign id: {{ item.s_id }}
-        <a [routerLink]="['/campaign/' + item.s_id]">Go to campaign</a>
+        Campaign id: {{ item.s_id }}<br>
+        <div style="display: flex; justify-content: flex-end">
+        <a mat-raised-button color="primary" [routerLink]="['/campaign/' + item.s_id]">Go to {{ item.name }} campaign</a>
+        </div>
       </div>
     </mat-expansion-panel>
   </mat-accordion>
