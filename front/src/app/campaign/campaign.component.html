@@ -18,8 +18,25 @@
     mode: 'javascript'
   }"
   ></ngx-codemirror>
+  CSS [{{ first?.date }}]
+  <ngx-codemirror
+    [ngModel]="first?.css"
+    [options]="{
+    lineNumbers: true,
+    readOnly: true,
+    theme: 'material',
+    mode: 'css'
+  }"
+  ></ngx-codemirror>
 
-  <code class="language-ts">
-    {{ first?.css }}
-  </code>
+  HTML [{{ first?.date }}]
+  <ngx-codemirror
+    [ngModel]="first?.html"
+    [options]="{
+    lineNumbers: true,
+    readOnly: true,
+    theme: 'material',
+    mode: 'html'
+  }"
+  ></ngx-codemirror>
 </div>
