@@ -1,0 +1,24 @@
+
+<div class="container">
+  <mat-accordion>
+    <div *ngIf="data !== []">
+      Pusto tu jakoś ;(
+      {{ data }}
+    </div>
+    <mat-expansion-panel hideToggle *ngFor="let item of data">
+      <mat-expansion-panel-header>
+        <mat-panel-title>{{ item.name }}</mat-panel-title>
+        <mat-panel-description>
+          {{ item.modify }}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <div>
+        Author: {{ item. author }}<br>
+        Last bacup from {{ item.date }}<br>
+        Campaign id: {{ item.s_id }}
+        <a [routerLink]="['/campaign/' + item.s_id]">Go to campaign</a>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+
+</div>

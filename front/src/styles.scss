@@ -2,3 +2,14 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.container {
+  width: 1366px;
+  padding: 1rem;
+  margin: auto;
+}
+
+// override angular material styles
+.mat-expansion-panel-header-description {
+  justify-content: flex-end;
+}
