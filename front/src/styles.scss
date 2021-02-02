@@ -19,3 +19,11 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     margin-right: 1rem;
   }
 }
+
+.mat-tab-label {
+  color: #000 !important;
+}
+
+.CodeMirror  {
+  min-height: calc(100vh - 64px - 49px - 2rem) !important;
+}

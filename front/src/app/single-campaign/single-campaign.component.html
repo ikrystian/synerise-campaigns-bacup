@@ -8,34 +8,40 @@
 </mat-toolbar>
 
 <div class="container">
-  <h2>Javascript</h2>
-  <ngx-codemirror
-    [ngModel]="campaign?.js"
-    [options]="{
+
+  <mat-tab-group>
+    <mat-tab label="Javascript">
+      <ngx-codemirror
+        [ngModel]="campaign?.js"
+        [options]="{
     lineNumbers: true,
     readOnly: true,
     theme: 'material',
     mode: 'javascript'
   }"
-  ></ngx-codemirror>
-  <h2>html</h2>
-  <ngx-codemirror
-    [ngModel]="campaign?.html"
-    [options]="{
-    lineNumbers: true,
-    readOnly: true,
-    theme: 'material',
-    mode: 'html'
-  }"
-  ></ngx-codemirror>
-  <h2>CSS</h2>
-  <ngx-codemirror
-    [ngModel]="campaign?.css"
-    [options]="{
+      ></ngx-codemirror>
+    </mat-tab>
+    <mat-tab label="CSS">
+      <ngx-codemirror
+        [ngModel]="campaign?.css"
+        [options]="{
     lineNumbers: true,
     readOnly: true,
     theme: 'material',
     mode: 'css'
   }"
-  ></ngx-codemirror>
+      ></ngx-codemirror>
+    </mat-tab>
+    <mat-tab label="HTML">
+      <ngx-codemirror
+        [ngModel]="campaign?.html"
+        [options]="{
+    lineNumbers: true,
+    readOnly: true,
+    theme: 'material',
+    mode: 'html'
+  }"
+      ></ngx-codemirror>
+    </mat-tab>
+  </mat-tab-group>
 </div>

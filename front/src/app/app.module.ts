@@ -16,6 +16,7 @@ import { CodemirrorModule } from '@ctrl/ngx-codemirror';
 import { FormsModule } from '@angular/forms';
 import { MatTableModule } from '@angular/material/table';
 import { SingleCampaignComponent } from './single-campaign/single-campaign.component';
+import { MatTabsModule } from '@angular/material/tabs';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { SingleCampaignComponent } from './single-campaign/single-campaign.compo
     CodemirrorModule,
     FormsModule,
     MatTableModule,
+    MatTabsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
