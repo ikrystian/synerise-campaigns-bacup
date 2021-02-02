@@ -10,7 +10,7 @@ import { Subscription } from 'rxjs';
 })
 export class SingleCampaignComponent implements OnInit {
   private routeSub: Subscription;
-  private baseUrl = 'http://bpcoders.nazwa.pl/projekty/bacup-synerise/show.php';
+  private baseUrl = 'https://bpcoders.nazwa.pl/projekty/bacup-synerise/show.php';
 
   campaign:any;
   constructor(private route: ActivatedRoute, private http: HttpClient) {

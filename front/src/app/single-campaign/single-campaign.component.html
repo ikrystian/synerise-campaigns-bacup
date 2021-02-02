@@ -9,39 +9,48 @@
 
 <div class="container">
 
-  <mat-tab-group>
+  <mat-tab-group *ngIf="campaign">
     <mat-tab label="Javascript">
-      <ngx-codemirror
-        [ngModel]="campaign?.js"
-        [options]="{
+      <ng-template matTabContent>
+        <ngx-codemirror
+          [ngModel]="campaign?.js"
+          [options]="{
     lineNumbers: true,
     readOnly: true,
     theme: 'material',
+     autoFocus: true,
     mode: 'javascript'
   }"
-      ></ngx-codemirror>
+        ></ngx-codemirror>
+      </ng-template>
     </mat-tab>
     <mat-tab label="CSS">
-      <ngx-codemirror
-        [ngModel]="campaign?.css"
-        [options]="{
+      <ng-template matTabContent>
+        <ngx-codemirror
+          [ngModel]="campaign?.css"
+          [options]="{
     lineNumbers: true,
     readOnly: true,
+    autoFocus: true,
     theme: 'material',
     mode: 'css'
   }"
-      ></ngx-codemirror>
+        ></ngx-codemirror>
+      </ng-template>
     </mat-tab>
     <mat-tab label="HTML">
-      <ngx-codemirror
-        [ngModel]="campaign?.html"
-        [options]="{
+      <ng-template matTabContent>
+        <ngx-codemirror
+          [ngModel]="campaign?.html"
+          [options]="{
     lineNumbers: true,
     readOnly: true,
+     autoFocus: true,
     theme: 'material',
     mode: 'html'
   }"
-      ></ngx-codemirror>
+        ></ngx-codemirror>
+      </ng-template>
     </mat-tab>
   </mat-tab-group>
 </div>

@@ -11,7 +11,7 @@ import { HttpClient } from '@angular/common/http';
 export class CampaignComponent implements OnInit {
   private routeSub: Subscription;
   public campaigns: any;
-  private baseUrl = 'http://bpcoders.nazwa.pl/projekty/bacup-synerise/show.php';
+  private baseUrl = 'https://bpcoders.nazwa.pl/projekty/bacup-synerise/show.php';
   public first: any;
   obj: any;
   displayedColumns: string[] = ['date', 'name', 'modify', 'link', 'action'];
