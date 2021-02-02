@@ -34,8 +34,7 @@ if (window.location.href === 'https://app.synerise.com/spa/modules/campaigns/lis
             clearInterval(intervalId);
             postData('https://bpcoders.nazwa.pl/projekty/bacup-synerise/filter.php', {campaigns})
                 .then(res => {
-                    // console.log(res);
-                    goToWebSite(res);
+                    goToWebSite(res.campaigns);
                 });
         }
 
@@ -105,13 +104,17 @@ if (product === 'true') {
                     css: $('code.css').text(),
                     js: $('code.javascript').text(),
                     summary: $('[step="display"] [class^="FormStepHeader"]').html(),
-                    link: '/' + window.location.href.split('https://app.synerise.com/')[1]
+                    link: window.location.href.split('?')[0]
                 };
                 postData('https://bpcoders.nazwa.pl/projekty/bacup-synerise/index.php', {
                     campaign
                 })
                     .then(data => {
-                        window.open('', '_self').close();
+                        if(data !== 200) {
+                            alert('All new campaign are copied, close rest of synerise tabs immediately')
+                        } else {
+                            window.open('', '_self').close();
+                        }
                     });
             }, 1000);
         } else {

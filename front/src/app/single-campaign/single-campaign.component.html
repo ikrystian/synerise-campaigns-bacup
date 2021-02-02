@@ -1,0 +1,41 @@
+<mat-toolbar color="primary" class="toolbar">
+  <div class="toolbar__back">
+    <button mat-icon-button (click)="back()">
+      <mat-icon aria-hidden="false" aria-label="Back to home">arrow_back</mat-icon>
+    </button>
+  </div>
+  <span>{{ campaign?.name }} {{ campaign?.date }}</span>
+</mat-toolbar>
+
+<div class="container">
+  <h2>Javascript</h2>
+  <ngx-codemirror
+    [ngModel]="campaign?.js"
+    [options]="{
+    lineNumbers: true,
+    readOnly: true,
+    theme: 'material',
+    mode: 'javascript'
+  }"
+  ></ngx-codemirror>
+  <h2>html</h2>
+  <ngx-codemirror
+    [ngModel]="campaign?.html"
+    [options]="{
+    lineNumbers: true,
+    readOnly: true,
+    theme: 'material',
+    mode: 'html'
+  }"
+  ></ngx-codemirror>
+  <h2>CSS</h2>
+  <ngx-codemirror
+    [ngModel]="campaign?.css"
+    [options]="{
+    lineNumbers: true,
+    readOnly: true,
+    theme: 'material',
+    mode: 'css'
+  }"
+  ></ngx-codemirror>
+</div>

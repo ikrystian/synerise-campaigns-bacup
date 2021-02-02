@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { CampaignComponent } from './campaign/campaign.component';
+import { SingleCampaignComponent } from './single-campaign/single-campaign.component';
 
 
 const routes: Routes = [
@@ -10,8 +11,12 @@ const routes: Routes = [
     component: HomeComponent
   },
   {
-    path: 'campaign/:id',
+    path: 'campaigns/:id',
     component: CampaignComponent
+  },
+  {
+    path: 'campaign/:id',
+    component: SingleCampaignComponent
   }
 ];
 

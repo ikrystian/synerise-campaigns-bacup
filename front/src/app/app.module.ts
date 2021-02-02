@@ -14,12 +14,15 @@ import { CampaignComponent } from './campaign/campaign.component';
 import { MatIconModule } from '@angular/material/icon';
 import { CodemirrorModule } from '@ctrl/ngx-codemirror';
 import { FormsModule } from '@angular/forms';
+import { MatTableModule } from '@angular/material/table';
+import { SingleCampaignComponent } from './single-campaign/single-campaign.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    CampaignComponent
+    CampaignComponent,
+    SingleCampaignComponent
   ],
   imports: [
     BrowserModule,
@@ -33,6 +36,7 @@ import { FormsModule } from '@angular/forms';
     MatIconModule,
     CodemirrorModule,
     FormsModule,
+    MatTableModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

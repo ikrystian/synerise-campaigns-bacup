@@ -1,42 +1,48 @@
 <mat-toolbar color="primary" class="toolbar">
   <div class="toolbar__back">
-    <button mat-icon-button [routerLink]="'/'" >
+    <button mat-icon-button [routerLink]="'/'">
       <mat-icon aria-hidden="false" aria-label="Back to home">arrow_back</mat-icon>
     </button>
   </div>
-  <span>{{ first?.name }}</span>
+  <span *ngIf="campaigns">{{ campaigns[0]?.name }}</span>
 </mat-toolbar>
 <div class="container">
-  <h1>Last revision</h1>
-  JavaScript [{{ first?.date }}]
-  <ngx-codemirror
-    [ngModel]="first?.js"
-    [options]="{
-    lineNumbers: true,
-    readOnly: true,
-    theme: 'material',
-    mode: 'javascript'
-  }"
-  ></ngx-codemirror>
-  CSS [{{ first?.date }}]
-  <ngx-codemirror
-    [ngModel]="first?.css"
-    [options]="{
-    lineNumbers: true,
-    readOnly: true,
-    theme: 'material',
-    mode: 'css'
-  }"
-  ></ngx-codemirror>
-
-  HTML [{{ first?.date }}]
-  <ngx-codemirror
-    [ngModel]="first?.html"
-    [options]="{
-    lineNumbers: true,
-    readOnly: true,
-    theme: 'material',
-    mode: 'html'
-  }"
-  ></ngx-codemirror>
+  <div class="revisions__info">
+    <p>Liczba znalezionych backupów: <strong>{{ campaigns?.length }}</strong></p>
+  </div>
 </div>
+<section class="revisions">
+  <table style="width: 100%;" mat-table [dataSource]="campaigns" class="mat-elevation-z8">
+
+    <ng-container matColumnDef="date">
+      <th mat-header-cell *matHeaderCellDef> Date.</th>
+      <td mat-cell *matCellDef="let element"> {{element.date}} </td>
+      `
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Name.</th>
+      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="modify">
+      <th mat-header-cell *matHeaderCellDef> Modify.</th>
+      <td mat-cell *matCellDef="let element"> {{element.modify}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="link">
+      <th mat-header-cell *matHeaderCellDef> Link.</th>
+      <td mat-cell *matCellDef="let element"> {{element.link}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="action">
+      <th mat-header-cell *matHeaderCellDef> Action.</th>
+      <td mat-cell *matCellDef="let element">
+        <button [routerLink]="'/campaign/' + element.id" mat-raised-button color="primary">Show campaign</button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</section>

@@ -14,6 +14,8 @@ export class CampaignComponent implements OnInit {
   private baseUrl = 'http://bpcoders.nazwa.pl/projekty/bacup-synerise/show.php';
   public first: any;
   obj: any;
+  displayedColumns: string[] = ['date', 'name', 'modify', 'link', 'action'];
+
   constructor(private route: ActivatedRoute, private http: HttpClient) {
     this.routeSub = this.route.params.subscribe(params => {
       this.getRepos(params['id'])
@@ -22,10 +24,9 @@ export class CampaignComponent implements OnInit {
   }
 
   getRepos(id: string) {
-    return this.http.get(this.baseUrl + '?id=' + id).subscribe(response => {
+    return this.http.get(this.baseUrl + '?s_id=' + id).subscribe(response => {
       this.campaigns = response
-      this.first = this.campaigns[0];
-      this.obj =  this.campaigns[0].html;
+      console.log(response);
     });
   }
 
