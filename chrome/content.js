@@ -111,11 +111,7 @@ if (product === 'true') {
                     campaign
                 })
                     .then(data => {
-                        if (data !== 200) {
-                            console.log(data);
-                        } else {
-                            window.open('', '_self').close();
-                        }
+                        window.open('', '_self').close();
                     });
             }, 1000);
         } else {
