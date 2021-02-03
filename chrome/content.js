@@ -34,15 +34,14 @@ if (window.location.href === 'https://app.synerise.com/spa/modules/campaigns/lis
             clearInterval(intervalId);
             postData('https://bpcoders.nazwa.pl/projekty/bacup-synerise/filter.php', {campaigns})
                 .then(res => {
-                    console.log(res.campaigns);
-                    // goToWebSite(res.campaigns);
+                    console.log(res);
+                    goToWebSite(res);
                 });
         }
 
         function goToWebSite(array) {
-            let elements = Array.from(array);
-            var count = elements.length - 1;
-            elements.forEach((url, i) => {
+            var count = array.length - 1;
+            array.forEach((url, i) => {
                 setTimeout(() => {
                     var win = window.open(url['link'] + '?closeAfterGetData=true', '_blank');
                     console.log(count--);
@@ -72,8 +71,8 @@ if (window.location.href === 'https://app.synerise.com/spa/modules/campaigns/lis
         }
 
         $('body').on('click', '#generateBacup', function () {
-            pages = [1, parseInt($('ul.ant-pagination .ant-pagination-jump-next + li').text())];
-            // pages = [1, 1];
+            // pages = [1, parseInt($('ul.ant-pagination .ant-pagination-jump-next + li').text())];
+            pages = [1, 1];
             getData();
         });
     }, 4000);

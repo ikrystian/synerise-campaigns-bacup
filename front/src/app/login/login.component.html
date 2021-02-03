@@ -1,0 +1,19 @@
+<div class="login-container">
+  <form [formGroup]="loginGroup" (ngSubmit)="login()">
+
+  <div>
+    <div class="alert" role="alert" *ngIf="showError">Podane hasło jest nieprawidłowe</div>
+    <mat-form-field class="example-form-field" matInputAutofocus>
+      <mat-label>Clearable input</mat-label>
+      <input matInput type="password"   formControlName="password">
+      <button mat-button  matSuffix mat-icon-button aria-label="Clear" >
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+    <div>
+      <button type="submit" mat-raised-button [disabled]="!loginGroup.valid">Update Name</button>
+    </div>
+  </div>
+
+  </form>
+</div>

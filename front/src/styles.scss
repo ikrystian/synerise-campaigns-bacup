@@ -1,5 +1,21 @@
 /* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/theming';
 
+@mixin candy-carousel-color($config-or-theme) {
+  // Extract the color configuration in case a theme has been passed.
+  // This allows consumers to either pass a theme object or a color configuration.
+  $config: mat-get-color-config($config-or-theme);
+  // Extract the palettes you need from the theme definition.
+  $primary: map-get($config, primary);
+  $accent: map-get($config, accent);
+
+  // Define any styles affected by the theme.
+  .candy-carousel {
+    // Use mat-color to extract individual colors from a palette.
+    background-color: mat-color($primary);
+    border-color: mat-color($accent, A400);
+  }
+}
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
@@ -26,4 +42,17 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .CodeMirror  {
   min-height: calc(100vh - 64px - 49px - 2rem) !important;
+}
+
+.m-title {
+  display: flex;
+  justify-content: space-between;
+}
+
+.list-item-status {
+  margin-left: 1rem;
+}
+
+.mat-expansion-panel-header-title {
+  justify-content: space-between;
 }

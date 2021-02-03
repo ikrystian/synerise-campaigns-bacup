@@ -5,8 +5,11 @@
   <mat-accordion>
     <mat-expansion-panel hideToggle *ngFor="let item of data">
       <mat-expansion-panel-header>
-        <mat-panel-title>{{ item.name }}</mat-panel-title>
+        <mat-panel-title>
+          {{ item.name }}
+        </mat-panel-title>
         <mat-panel-description>
+          <span class="list-item-status">{{ item.status }}</span>
           {{ item.modify }}
         </mat-panel-description>
       </mat-expansion-panel-header>

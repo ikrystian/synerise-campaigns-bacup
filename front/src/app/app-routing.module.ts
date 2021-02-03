@@ -3,12 +3,15 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { CampaignComponent } from './campaign/campaign.component';
 import { SingleCampaignComponent } from './single-campaign/single-campaign.component';
+import { LoginGuardGuard } from './login-guard.guard';
+import { LoginComponent } from './login/login.component';
 
 
 const routes: Routes = [
   {
     path: '',
-    component: HomeComponent
+    component: HomeComponent,
+    canActivate: [LoginGuardGuard]
   },
   {
     path: 'campaigns/:id',
@@ -17,6 +20,10 @@ const routes: Routes = [
   {
     path: 'campaign/:id',
     component: SingleCampaignComponent
+  },
+  {
+    path: 'login',
+    component: LoginComponent
   }
 ];
 

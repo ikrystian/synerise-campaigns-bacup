@@ -13,18 +13,24 @@ import { HomeComponent } from './home/home.component';
 import { CampaignComponent } from './campaign/campaign.component';
 import { MatIconModule } from '@angular/material/icon';
 import { CodemirrorModule } from '@ctrl/ngx-codemirror';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatTableModule } from '@angular/material/table';
 import { SingleCampaignComponent } from './single-campaign/single-campaign.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { MatBadgeModule } from '@angular/material/badge';
+import { LoginComponent } from './login/login.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     CampaignComponent,
-    SingleCampaignComponent
+    SingleCampaignComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +45,12 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
     CodemirrorModule,
     FormsModule,
     MatTableModule,
-    MatTabsModule
+    MatTabsModule,
+    MatBadgeModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatInputModule,
+    ReactiveFormsModule,
   ],
   providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
