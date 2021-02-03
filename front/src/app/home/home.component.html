@@ -9,8 +9,8 @@
           {{ item.name }}
         </mat-panel-title>
         <mat-panel-description>
-          <span class="list-item-status">{{ item.status }}</span>
-          {{ item.modify }}
+          <span class="list-item-status {{ item.status | lowercase }}">{{ item.status }}</span>
+          <span class="list-item-date">{{ item.modify }}</span>
         </mat-panel-description>
       </mat-expansion-panel-header>
       <div>

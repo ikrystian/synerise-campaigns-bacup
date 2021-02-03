@@ -16,8 +16,26 @@
     border-color: mat-color($accent, A400);
   }
 }
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+:root{
+  --body-background-color: #f2f5f6;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color: var(--body-background-color);
+}
 
 .container {
   width: 1366px;
@@ -40,17 +58,32 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   color: #000 !important;
 }
 
-.CodeMirror  {
+.CodeMirror {
   min-height: calc(100vh - 64px - 49px - 2rem) !important;
 }
 
 .m-title {
   display: flex;
+  max-width: 100%;
   justify-content: space-between;
 }
 
 .list-item-status {
   margin-left: 1rem;
+  border: 1px solid #dedede;
+  font-size: 12px;
+  padding: 0 1rem;
+  border-radius: 50px;
+
+  &.active {
+    border-color: #00C851;
+    color: #00C851;
+  }
+}
+
+.list-item-date {
+  min-width: 200px;
+  text-align: right;
 }
 
 .mat-expansion-panel-header-title {

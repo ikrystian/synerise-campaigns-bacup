@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
 
   login() {
     if (this.loginGroup.controls.password.value == this.formatDate()) {
-      sessionStorage.setItem('logged', 'true');
+      sessionStorage.setItem('key', this.formatDate());
       this.router.navigate(['']);
     } else {
       this.showError = true;

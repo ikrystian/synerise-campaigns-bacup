@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-campaign',
@@ -11,7 +12,7 @@ import { HttpClient } from '@angular/common/http';
 export class CampaignComponent implements OnInit {
   private routeSub: Subscription;
   public campaigns: any;
-  private baseUrl = 'https://bpcoders.nazwa.pl/projekty/bacup-synerise/show.php';
+  private baseUrl = `${environment.apiUrl}/show.php`;
   public first: any;
   obj: any;
   displayedColumns: string[] = ['date', 'name', 'modify', 'link', 'action'];

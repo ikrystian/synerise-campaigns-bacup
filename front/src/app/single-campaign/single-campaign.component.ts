@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Subscription } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-single-campaign',
@@ -10,7 +11,7 @@ import { Subscription } from 'rxjs';
 })
 export class SingleCampaignComponent implements OnInit {
   private routeSub: Subscription;
-  private baseUrl = 'https://bpcoders.nazwa.pl/projekty/bacup-synerise/show.php';
+  private baseUrl = `${environment.apiUrl}/show.php`;
 
   campaign:any;
   constructor(private route: ActivatedRoute, private http: HttpClient) {
