@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Subscription } from 'rxjs';
 import { environment } from '../../environments/environment';
+import { CampaignService } from '../campaign.service';
 
 @Component({
   selector: 'app-single-campaign',
@@ -11,24 +12,19 @@ import { environment } from '../../environments/environment';
 })
 export class SingleCampaignComponent implements OnInit {
   private routeSub: Subscription;
-  private baseUrl = `${environment.apiUrl}/show.php`;
 
-  campaign:any;
-  constructor(private route: ActivatedRoute, private http: HttpClient) {
+  campaign: any;
+
+  constructor(private route: ActivatedRoute, private http: HttpClient, private campaignService: CampaignService) {
     this.routeSub = this.route.params.subscribe(params => {
-      this.getRepos(params['id'])
-    });}
+      this.campaignService.getBacup(params['id'])
+        .subscribe(data => this.campaign = data);
+    });
+  }
 
-    back() {
-      window.history.back();
-    }
-
-    getRepos(id: string) {
-      return this.http.get(this.baseUrl + '?id=' + id).subscribe(response => {
-        this.campaign = response
-        console.log(response);
-      });
-    }
+  back() {
+    window.history.back();
+  }
 
   ngOnInit(): void {
   }

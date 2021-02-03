@@ -1,24 +1,22 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
-import { environment } from '../../environments/environment';
+import { CampaignService } from '../campaign.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })
-export class HomeComponent {
+export class HomeComponent  implements OnInit {
 
-  data: any;
+  campaigns: any;
   searchText: any;
-  constructor(private http: HttpClient) {
-    this.getRepos();
+  constructor(private http: HttpClient, private campaignService: CampaignService) {
+
   }
 
-  getRepos() {
-    return this.http.get(`${environment.apiUrl}/show.php`).subscribe(response => {
-      this.data = response;
-    });
+  ngOnInit() {
+    this.campaignService.getAllCampaigns()
+      .subscribe(data => this.campaigns = data);
   }
-
 }

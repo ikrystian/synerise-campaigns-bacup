@@ -15,7 +15,7 @@
   </div>
 
   <mat-accordion>
-    <mat-expansion-panel hideToggle *ngFor="let item of data | filter:searchText">
+    <mat-expansion-panel hideToggle *ngFor="let item of campaigns | filter:searchText">
       <mat-expansion-panel-header>
         <mat-panel-title>
           {{ item.name }}

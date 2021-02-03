@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
+import { CampaignService } from '../campaign.service';
 
 @Component({
   selector: 'app-campaign',
@@ -17,21 +18,14 @@ export class CampaignComponent implements OnInit {
   obj: any;
   displayedColumns: string[] = ['date', 'name', 'modify', 'link', 'action'];
 
-  constructor(private route: ActivatedRoute, private http: HttpClient) {
+  constructor(private route: ActivatedRoute, private http: HttpClient, private campaignService: CampaignService) {
     this.routeSub = this.route.params.subscribe(params => {
-      this.getRepos(params['id'])
-    });
-
-  }
-
-  getRepos(id: string) {
-    return this.http.get(this.baseUrl + '?s_id=' + id).subscribe(response => {
-      this.campaigns = response
-      console.log(response);
+      this.campaignService.getBacups(params['id'])
+        .subscribe(data => this.campaigns = data);
     });
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
 
   }
 
