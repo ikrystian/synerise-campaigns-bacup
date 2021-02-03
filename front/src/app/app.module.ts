@@ -25,6 +25,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { CampaignService } from './campaign.service';
+import { SafePipe } from './safe.pipe';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { CampaignService } from './campaign.service';
     CampaignComponent,
     SingleCampaignComponent,
     LoginComponent,
+    SafePipe,
   ],
   imports: [
     BrowserModule,

@@ -52,5 +52,12 @@
         ></ngx-codemirror>
       </ng-template>
     </mat-tab>
+    <mat-tab label="Other information">
+      <ng-template matTabContent>
+        <h2>Summary</h2>
+        <div class="summary" [innerHtml]="campaign?.summary | safe: 'html'"></div>
+
+      </ng-template>
+    </mat-tab>
   </mat-tab-group>
 </div>
