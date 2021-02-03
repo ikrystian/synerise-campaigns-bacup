@@ -110,11 +110,7 @@ if (product === 'true') {
                     campaign
                 })
                     .then(data => {
-                        if(data !== 200) {
-                            alert('All new campaign are copied, close rest of synerise tabs immediately')
-                        } else {
-                            window.open('', '_self').close();
-                        }
+                        window.open('', '_self').close();
                     });
             }, 1000);
         } else {

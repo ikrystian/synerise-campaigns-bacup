@@ -17,6 +17,7 @@ import { FormsModule } from '@angular/forms';
 import { MatTableModule } from '@angular/material/table';
 import { SingleCampaignComponent } from './single-campaign/single-campaign.component';
 import { MatTabsModule } from '@angular/material/tabs';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,7 @@ import { MatTabsModule } from '@angular/material/tabs';
     MatTableModule,
     MatTabsModule
   ],
-  providers: [],
+  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
