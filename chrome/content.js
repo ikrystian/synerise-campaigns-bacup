@@ -34,7 +34,8 @@ if (window.location.href === 'https://app.synerise.com/spa/modules/campaigns/lis
             clearInterval(intervalId);
             postData('https://bpcoders.nazwa.pl/projekty/bacup-synerise/filter.php', {campaigns})
                 .then(res => {
-                    goToWebSite(res.campaigns);
+                    console.log(res.campaigns);
+                    // goToWebSite(res.campaigns);
                 });
         }
 
@@ -110,7 +111,11 @@ if (product === 'true') {
                     campaign
                 })
                     .then(data => {
-                        window.open('', '_self').close();
+                        if(data !== 200) {
+                            console.log(data)
+                        } {
+                            window.open('', '_self').close();
+                        }
                     });
             }, 1000);
         } else {
