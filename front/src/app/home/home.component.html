@@ -2,8 +2,20 @@
   <span>Home page</span>
 </mat-toolbar>
 <div class="container">
+
+  <div class="form-group">
+    <form class="example-form">
+      <mat-form-field class="example-full-width">
+        <mat-label>Type to filter list Search text</mat-label>
+        <input class="form-control" matInput type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder=" Start searching for a campaign id, name, author date etc.">
+        <mat-icon matSuffix>search</mat-icon>
+      </mat-form-field>
+    </form>
+
+  </div>
+
   <mat-accordion>
-    <mat-expansion-panel hideToggle *ngFor="let item of data">
+    <mat-expansion-panel hideToggle *ngFor="let item of data | filter:searchText">
       <mat-expansion-panel-header>
         <mat-panel-title>
           {{ item.name }}
