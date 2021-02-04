@@ -1,3 +1,16 @@
 .summary svg {
   display: none;
 }
+.summary-container {
+  padding: 1rem;
+}
+
+.summary {
+  ul {
+    padding-left: 20px
+  }
+
+  strong {
+    font-weight: 500;
+  }
+}

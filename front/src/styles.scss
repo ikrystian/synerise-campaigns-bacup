@@ -37,6 +37,11 @@ body {
   background-color: var(--body-background-color);
 }
 
+.main-container {
+  height: calc(100vh - 64px);
+  overflow: auto;
+}
+
 .container {
   width: 1366px;
   padding: 1rem;

@@ -22,7 +22,7 @@ if (window.location.href === 'https://app.synerise.com/spa/modules/campaigns/lis
         var campaigns = [];
         var links = [];
         let campaign = {};
-        const button = `<button id="generateBacup" style="margin-left: 0.5rem;">Create bacup</button>`;
+        const button = `<button id="generateBacup" class="ant-btn  ant-btn-primary" style="margin-left: 0.5rem; background-color: rgb(255, 88, 49); border-color: rgb(255, 88, 49); ">Create bacup</button>`;
         let pages = [];
         $('div[class^="PageHeaderstyles__PageHeaderRightSide"]').append(button);
 
@@ -71,8 +71,8 @@ if (window.location.href === 'https://app.synerise.com/spa/modules/campaigns/lis
         }
 
         $('body').on('click', '#generateBacup', function () {
-            // pages = [1, parseInt($('ul.ant-pagination .ant-pagination-jump-next + li').text())];
-            pages = [1, 1];
+            pages = [1, parseInt($('ul.ant-pagination .ant-pagination-jump-next + li').text())];
+            // pages = [1, 1];
             getData();
         });
     }, 4000);
@@ -111,7 +111,8 @@ if (product === 'true') {
                 })
                     .then(data => {
                         if(data !== 200) {
-                            console.log(data)
+                            console.log(data);
+                            window.open('', '_self').close();
                         } {
                             window.open('', '_self').close();
                         }

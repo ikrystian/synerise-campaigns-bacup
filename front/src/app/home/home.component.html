@@ -1,39 +1,43 @@
 <mat-toolbar color="primary">
   <span>Home page</span>
 </mat-toolbar>
-<div class="container">
+<div class="main-container">
+  <div class="container">
 
-  <div class="form-group">
-    <form class="example-form">
-      <mat-form-field class="example-full-width">
-        <mat-label>Type to filter list Search text</mat-label>
-        <input class="form-control" matInput type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder=" Start searching for a campaign id, name, author date etc.">
-        <mat-icon matSuffix>search</mat-icon>
-      </mat-form-field>
-    </form>
+    <div class="form-group">
+      <form class="example-form">
+        <mat-form-field class="example-full-width">
+          <mat-label>Type to filter list Search text</mat-label>
+          <input class="form-control" matInput type="text" name="search" [(ngModel)]="searchText" autocomplete="off"
+                 placeholder=" Start searching for a campaign id, name, author date etc.">
+          <mat-icon matSuffix>search</mat-icon>
+        </mat-form-field>
+      </form>
+
+    </div>
+
+    <mat-accordion>
+      <mat-expansion-panel hideToggle *ngFor="let item of campaigns | filter:searchText">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            {{ item.name }}
+          </mat-panel-title>
+          <mat-panel-description>
+            <span class="list-item-status {{ item.status | lowercase }}">{{ item.status }}</span>
+            <span class="list-item-date">{{ item.modify }}</span>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <div>
+          Author: {{ item.author }}<br>
+          Last bacup from {{ item.date }}<br>
+          Campaign id: {{ item.s_id }}<br>
+          <div style="display: flex; justify-content: flex-end">
+            <a mat-raised-button color="primary" [routerLink]="['/campaigns/' + item.s_id]">Go to {{ item.name }}
+              campaign</a>
+          </div>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
 
   </div>
-
-  <mat-accordion>
-    <mat-expansion-panel hideToggle *ngFor="let item of campaigns | filter:searchText">
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          {{ item.name }}
-        </mat-panel-title>
-        <mat-panel-description>
-          <span class="list-item-status {{ item.status | lowercase }}">{{ item.status }}</span>
-          <span class="list-item-date">{{ item.modify }}</span>
-        </mat-panel-description>
-      </mat-expansion-panel-header>
-      <div>
-        Author: {{ item. author }}<br>
-        Last bacup from {{ item.date }}<br>
-        Campaign id: {{ item.s_id }}<br>
-        <div style="display: flex; justify-content: flex-end">
-        <a mat-raised-button color="primary" [routerLink]="['/campaigns/' + item.s_id]">Go to {{ item.name }} campaign</a>
-        </div>
-      </div>
-    </mat-expansion-panel>
-  </mat-accordion>
-
 </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Subscription } from 'rxjs';
@@ -7,7 +7,8 @@ import { CampaignService } from '../campaign.service';
 @Component({
   selector: 'app-single-campaign',
   templateUrl: './single-campaign.component.html',
-  styleUrls: ['./single-campaign.component.scss']
+  styleUrls: ['./single-campaign.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class SingleCampaignComponent implements OnInit {
   private routeSub: Subscription;
