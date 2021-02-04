@@ -7,3 +7,13 @@
     }
   }
 }
+
+.campaign-link {
+  color: var(--primary-color);
+  text-decoration: underline;
+
+  &:hover,
+  &:focus {
+    text-decoration: none;
+  }
+}
