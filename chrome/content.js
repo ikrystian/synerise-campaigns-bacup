@@ -71,6 +71,7 @@ if (window.location.href === 'https://app.synerise.com/spa/modules/campaigns/lis
         }
 
         $('body').on('click', '#generateBacup', function () {
+            $('#__next').prepend('<div style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(0, 0, 0, 0.8); z-index: 10000; color: #fff; display: grid; place-items: center; font-size: 20px;">Bacup in progress. Please wait log as it necessary.</div>')
             pages = [1, parseInt($('ul.ant-pagination .ant-pagination-jump-next + li').text())];
             // pages = [1, 1];
             getData();
