@@ -8,5 +8,7 @@ $newArray = array_filter(
         return !array_search(["s_id" => $e['s_id'], "modify" => $e['modify']], $campaigns);
     }
 );
-
-echo json_encode($newArray);
+if(count($newArray) > 0) {
+    $db->insert('stats',['date' => date('Y-m-d H:i:s'),'count' => count($newArray)]);
+}
+echo json_encode(array_reverse($newArray));

@@ -19,7 +19,8 @@ if($db->count == 0) {
         'modify' => $data['campaign']['modify'],
         'status' => $data['campaign']['status'],
         'author' => $data['campaign']['author'],
-        'link' => $data['campaign']['link']
+        'link' => $data['campaign']['link'],
+        'modify_date' => date('Y-m-d H:i:s', strtotime($data['campaign']['modify'])),
     ];
     $id = $db->insert('campaigns', $insert);
     if($id) {
