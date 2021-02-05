@@ -11,6 +11,7 @@ export class HomeComponent  implements OnInit {
 
   campaigns: any;
   searchText: any;
+  status: any;
   constructor(private http: HttpClient, private campaignService: CampaignService) {
 
   }
@@ -18,5 +19,9 @@ export class HomeComponent  implements OnInit {
   ngOnInit() {
     this.campaignService.getAllCampaigns()
       .subscribe(data => this.campaigns = data);
+
+    this.campaignService.getStatus()
+      .subscribe(data => this.status = data);
   }
+
 }
