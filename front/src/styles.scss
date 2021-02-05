@@ -64,12 +64,38 @@ body {
   }
 
   .toolbar {
+    position: relative;
+    z-index: 2;
+
     &.mat-primary {
       background-color: #fff;
       color: rgba(0, 0, 0, .54);
       box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
     }
 
+    &__back {
+      button {
+        background-color: var(--primary-color);
+        height: 48px;
+        width: 48px;
+        display: grid;
+        place-items: center;
+        margin-right: 1rem;
+        transition: opacity 0.2s ease;
+        border-radius: 0;
+
+        &:hover,
+        &:focus {
+          opacity: 0.9;
+        }
+      }
+
+      .mat-icon {
+        color: #fff;
+        position: relative;
+        top: -1px;
+      }
+    }
 
     span {
       font-size: 16px;
@@ -135,5 +161,9 @@ body {
   .mat-expansion-panel-header-title {
     transition: all 0.2s ease;
     color: var(--font-color);
+  }
+
+  .mat-flat-button.mat-primary, .mat-raised-button.mat-primary, .mat-fab.mat-primary, .mat-mini-fab.mat-primary {
+    background-color: var(--primary-color) !important;
   }
 }
