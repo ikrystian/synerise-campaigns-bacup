@@ -105,7 +105,8 @@ if (product === 'true') {
                     css: $('code.css').text(),
                     js: $('code.javascript').text(),
                     summary: $('[step="display"] [class^="FormStepHeader"]').html(),
-                    link: window.location.href.split('?')[0]
+                    link: window.location.href.split('?')[0],
+                    description: $('[class^="CampaignHeaderstyles__Description"]').text(),
                 };
                 postData('https://bpcoders.nazwa.pl/projekty/bacup-synerise/index.php', {
                     campaign

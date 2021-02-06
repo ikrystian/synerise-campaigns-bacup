@@ -55,6 +55,8 @@
       <mat-tab label="Other information">
         <ng-template matTabContent>
           <div class="summary-container">
+            <h2>Description</h2>
+            <p>{{ campaign.description }}</p>
             <h2>Summary</h2>
             <div class="summary" [innerHtml]="campaign?.summary | safe: 'html'"></div>
           </div>
